@@ -1,0 +1,2 @@
+# Any-where-auto-typer
+Any where auto typer is a python code which can able to type automaticaly . You can run code  and click the mouse pointer where you want to type ,thats it . This will be usefull where copy paste is blocked ,so you have to type insted you can  use this python code. No extention can detect it . And some times copy paste is available with use some extentions  but they can be detected. so using this auto typer is much better idea than any other technic.
