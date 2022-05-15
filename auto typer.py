@@ -1,4 +1,4 @@
-#this code is made by Amara Hemanth Kumar
+#This code is made by Amara Hemanth Kumar
 from pynput.keyboard import Key, Controller 
 import time 
 print("Make the tab where you wanted to auto type conviniently to reach with minimam clicks \n")
