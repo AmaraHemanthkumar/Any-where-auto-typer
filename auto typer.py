@@ -1,7 +1,27 @@
 # This code is based on the original by Amara Hemanth Kumar
-from pynput.keyboard import Controller
 import time
 import os
+import sys
+import subprocess
+
+# --- AUTO-INSTALLER BLOCK ---
+# Try to import pynput. If it fails, install it automatically.
+try:
+    from pynput.keyboard import Controller
+except ImportError:
+    print("Required module 'pynput' not found. Installing it automatically...")
+    try:
+        # sys.executable ensures we use the pip associated with the current Python environment
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "pynput"])
+        print("Installation successful!\n")
+        # Now that it's installed, we can import it
+        from pynput.keyboard import Controller
+    except Exception as e:
+        print(f"\nFailed to install 'pynput' automatically. Error: {e}")
+        print("Please install it manually by opening your terminal/command prompt and typing:")
+        print("pip install pynput")
+        sys.exit(1) # Stop the script so it doesn't crash later
+# -----------------------------
 
 def main():
     print("--- Auto-Typer ---")
@@ -53,7 +73,7 @@ def main():
     else:
         print("Invalid choice. Defaulting to 0.1 seconds delay.")
 
-    # Allow user to customize the wait time before typing starts (instead of a fixed 20 seconds)
+    # Allow user to customize the wait time before typing starts
     try:
         wait_time = int(input("\nHow many seconds do you need to click on your target window? (e.g., 5): "))
     except ValueError:
@@ -68,7 +88,6 @@ def main():
     # Initialize the controller and start typing
     keyboard = Controller()
     
-    # We don't need a split() function; Python can iterate directly over a string
     for char in content:
         keyboard.type(char)
         time.sleep(delay)
